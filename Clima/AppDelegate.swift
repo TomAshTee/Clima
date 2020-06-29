@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  Clima
 //
-//  Created by Angela Yu on 01/09/2019.
-//  Copyright © 2019 App Brewery. All rights reserved.
+//  Created by Tomasz Jaeschke on 29/06/2020.
+//  Copyright © 2020 App Brewery. All rights reserved.
 //
 
 import UIKit
