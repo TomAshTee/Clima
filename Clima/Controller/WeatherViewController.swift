@@ -55,7 +55,16 @@ class WeatherViewController: UIViewController, UITextFieldDelegate, WeatherManag
     }
     
     func didUpdateWeathe(_ weatherManager: WeatherManager, _ weatherModel: WeatherModel) {
-        print("I call delegate: \(weatherModel.cityName)")
+        DispatchQueue.main.async {
+            self.temperatureLabel.text = weatherModel.temperatureString
+            self.conditionImageView.image = UIImage(systemName: weatherModel.conditionName)
+            self.cityLabel.text = weatherModel.cityName
+            self.descriptionLbl.text = weatherModel.description
+        }
        }
+    
+    func didFailWithError(_ error: Error) {
+        print(error)
+    }
 }
 

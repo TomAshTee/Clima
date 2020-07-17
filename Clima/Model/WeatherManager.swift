@@ -24,7 +24,7 @@ struct WeatherManager {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
-                    print(error!)
+                    self.delegate?.didFailWithError(error!)
                     return
                 }
                 if let safeData = data {
@@ -45,7 +45,7 @@ struct WeatherManager {
             
             let temp = decodedData.main.temp
             let city = decodedData.name
-            let description = decodedData.weather[0].description
+            let description = decodedData.weather[0].description.localizedCapitalized
             let id = decodedData.weather[0].id
             
             let weather = WeatherModel(temperature: temp, cityName: city, description: description, weatherID: id)
@@ -53,7 +53,7 @@ struct WeatherManager {
             return weather
             
         } catch {
-            print(error)
+            self.delegate?.didFailWithError(error)
             return nil
         }
     }
